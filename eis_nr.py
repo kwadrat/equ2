@@ -39,23 +39,8 @@ class EisNumber:
         b = self.part_omega
         c = other.part_real
         d = other.part_omega
-        if 1:
-            ##############################################################################
-            tmp_real = a * c - b * d
-            tmp_omega = b * c + a * d - b * d
-            ##############################################################################
-        else:
-            ##############################################################################
-            if b and d:
-                tmp_real = -1
-                tmp_omega = -1
-            elif d:
-                tmp_real = 0
-                tmp_omega = 1
-            else:
-                tmp_real = a * c
-                tmp_omega = b * c
-            ##############################################################################
+        tmp_real = a * c - b * d
+        tmp_omega = b * c + a * d - b * d
         return EisNumber(tmp_real, tmp_omega)
 
 class TestNumber(unittest.TestCase):

@@ -13,9 +13,9 @@ class EisNumber:
 
 class TestNumber(unittest.TestCase):
     def test_create_number(self):
-        """
+        '''
         TestNumber:
-        """
+        '''
         obj = EisNumber()
         self.assertEqual(obj.part_omega, 0)
         self.assertEqual(obj.part_real, 0)

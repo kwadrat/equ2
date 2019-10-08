@@ -60,9 +60,11 @@ class EisNumber:
             'EisNumber(%d, %d)' % (self.part_real, self.part_omega)
             )
 
-    def mouse(self):
+    def norm(self):
         '''
         EisNumber:
+        Norm - it is a square of modulus
+        N(a + bw) = |a + bw|^2 = a^2 - ab + b^2
         '''
         a = self.part_real
         b = self.part_omega
@@ -144,12 +146,12 @@ class TestNumber(unittest.TestCase):
         TestNumber:
         '''
         obj = EisNumber(2, 0)
-        self.assertEqual(obj.mouse(), 4)
+        self.assertEqual(obj.norm(), 4)
         obj_b = EisNumber(3, 0)
-        self.assertEqual(obj_b.mouse(), 9)
+        self.assertEqual(obj_b.norm(), 9)
         obj_c = EisNumber(0, 5)
-        self.assertEqual(obj_c.mouse(), 25)
+        self.assertEqual(obj_c.norm(), 25)
         obj_d = EisNumber(0, 7)
-        self.assertEqual(obj_d.mouse(), 49)
+        self.assertEqual(obj_d.norm(), 49)
         obj_e = EisNumber(2, 3)
-        self.assertEqual(obj_e.mouse(), 7)
+        self.assertEqual(obj_e.norm(), 7)

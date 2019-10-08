@@ -9,15 +9,9 @@ red_green_bar.py is taken from https://github.com/kwadrat/rgb_tdd.git
 import sys
 import unittest
 
+import eis_nr
 
-class TestSimpleExample(unittest.TestCase):
-    def test_simple_example(self):
-        """
-        TestSimpleExample:
-        """
-        self.assertEqual(0, 1)
-
-fast_test_ls = [TestSimpleExample]
+fast_test_ls = [eis_nr.TestNumber]
 
 
 def add_all_fast(suite):

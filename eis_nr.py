@@ -67,7 +67,7 @@ class EisNumber:
         a = self.part_real
         b = self.part_omega
         if b:
-            value = 25
+            value = b ** 2
         else:
             value = a ** 2
         return value
@@ -152,3 +152,5 @@ class TestNumber(unittest.TestCase):
         self.assertEqual(obj_b.mouse(), 9)
         obj_c = EisNumber(0, 5)
         self.assertEqual(obj_c.mouse(), 25)
+        obj_d = EisNumber(0, 7)
+        self.assertEqual(obj_d.mouse(), 49)

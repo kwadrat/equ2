@@ -52,6 +52,21 @@ class EisNumber:
             self.part_omega == other.part_omega
             )
 
+    def __repr__(self):
+        '''
+        EisNumber:
+        '''
+        return (
+            'EisNumber(%d, %d)' % (self.part_real, self.part_omega)
+            )
+
+    def mouse(self):
+        '''
+        EisNumber:
+        '''
+        value = 4
+        return value
+
 
 class TestNumber(unittest.TestCase):
     def test_create_number(self):
@@ -121,3 +136,10 @@ class TestNumber(unittest.TestCase):
         obj_b = EisNumber(0, 1)
         obj_c = obj_a * obj_b
         self.assertEqual(obj_c, EisNumber(-1, -1))
+
+    def test_real_only(self):
+        '''
+        TestNumber:
+        '''
+        obj = EisNumber(2, 0)
+        self.assertEqual(obj.mouse(), 4)

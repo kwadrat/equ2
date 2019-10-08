@@ -31,6 +31,14 @@ class EisNumber:
         tmp_omega = self.part_omega - other.part_omega
         return EisNumber(tmp_real, tmp_omega)
 
+    def __mul__(self, other):
+        '''
+        EisNumber:
+        '''
+        tmp_real = 0
+        tmp_omega = 0
+        return EisNumber(tmp_real, tmp_omega)
+
 class TestNumber(unittest.TestCase):
     def test_create_number(self):
         '''
@@ -67,3 +75,13 @@ class TestNumber(unittest.TestCase):
         obj_c = obj_a - obj_b
         self.assertEqual(obj_c.part_real, 7)
         self.assertEqual(obj_c.part_omega, 16)
+
+    def test_multiply_by_zero(self):
+        '''
+        TestNumber:
+        '''
+        obj_a = EisNumber(1, 2)
+        obj_b = EisNumber()
+        obj_c = obj_a * obj_b
+        self.assertEqual(obj_c.part_real, 0)
+        self.assertEqual(obj_c.part_omega, 0)

@@ -64,7 +64,8 @@ class EisNumber:
         '''
         EisNumber:
         '''
-        value = self.part_real ** 2
+        a = self.part_real
+        value = a ** 2
         return value
 
 

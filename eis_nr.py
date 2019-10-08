@@ -66,10 +66,17 @@ class EisNumber:
         '''
         a = self.part_real
         b = self.part_omega
-        if b:
-            value = b ** 2
+        if 1:
+            ##############################################################################
+            value = a * a - a * b + b * b
+            ##############################################################################
         else:
-            value = a ** 2
+            ##############################################################################
+            if b:
+                value = b ** 2
+            else:
+                value = a ** 2
+            ##############################################################################
         return value
 
 
@@ -154,3 +161,5 @@ class TestNumber(unittest.TestCase):
         self.assertEqual(obj_c.mouse(), 25)
         obj_d = EisNumber(0, 7)
         self.assertEqual(obj_d.mouse(), 49)
+        obj_e = EisNumber(2, 3)
+        self.assertEqual(obj_e.mouse(), 7)

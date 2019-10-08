@@ -23,6 +23,14 @@ class EisNumber:
         tmp_omega = self.part_omega + other.part_omega
         return EisNumber(tmp_real, tmp_omega)
 
+    def __sub__(self, other):
+        '''
+        EisNumber:
+        '''
+        tmp_real = self.part_real - other.part_real
+        tmp_omega = self.part_omega - other.part_omega
+        return EisNumber(tmp_real, tmp_omega)
+
 class TestNumber(unittest.TestCase):
     def test_create_number(self):
         '''
@@ -49,3 +57,13 @@ class TestNumber(unittest.TestCase):
         obj_c = obj_a + obj_b
         self.assertEqual(obj_c.part_real, 13)
         self.assertEqual(obj_c.part_omega, 24)
+
+    def test_substract_numbers(self):
+        '''
+        TestNumber:
+        '''
+        obj_a = EisNumber(10, 20)
+        obj_b = EisNumber(3, 4)
+        obj_c = obj_a - obj_b
+        self.assertEqual(obj_c.part_real, 7)
+        self.assertEqual(obj_c.part_omega, 16)

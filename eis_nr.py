@@ -59,16 +59,14 @@ class TestNumber(unittest.TestCase):
         TestNumber:
         '''
         obj = EisNumber()
-        self.assertEqual(obj.part_real, 0)
-        self.assertEqual(obj.part_omega, 0)
+        self.assertEqual(obj, EisNumber(0, 0))
 
     def test_set_parts(self):
         '''
         TestNumber:
         '''
         obj = EisNumber(1, 2)
-        self.assertEqual(obj.part_real, 1)
-        self.assertEqual(obj.part_omega, 2)
+        self.assertEqual(obj, EisNumber(1, 2))
 
     def test_add_numbers(self):
         '''
@@ -77,8 +75,7 @@ class TestNumber(unittest.TestCase):
         obj_a = EisNumber(10, 20)
         obj_b = EisNumber(3, 4)
         obj_c = obj_a + obj_b
-        self.assertEqual(obj_c.part_real, 13)
-        self.assertEqual(obj_c.part_omega, 24)
+        self.assertEqual(obj_c, EisNumber(13, 24))
 
     def test_substract_numbers(self):
         '''
@@ -87,8 +84,7 @@ class TestNumber(unittest.TestCase):
         obj_a = EisNumber(10, 20)
         obj_b = EisNumber(3, 4)
         obj_c = obj_a - obj_b
-        self.assertEqual(obj_c.part_real, 7)
-        self.assertEqual(obj_c.part_omega, 16)
+        self.assertEqual(obj_c, EisNumber(7, 16))
 
     def test_multiply_by_zero(self):
         '''
@@ -97,8 +93,7 @@ class TestNumber(unittest.TestCase):
         obj_a = EisNumber(1, 2)
         obj_b = EisNumber()
         obj_c = obj_a * obj_b
-        self.assertEqual(obj_c.part_real, 0)
-        self.assertEqual(obj_c.part_omega, 0)
+        self.assertEqual(obj_c, EisNumber(0, 0))
 
     def test_multiply_by_three(self):
         '''
@@ -107,8 +102,7 @@ class TestNumber(unittest.TestCase):
         obj_a = EisNumber(2, 3)
         obj_b = EisNumber(5)
         obj_c = obj_a * obj_b
-        self.assertEqual(obj_c.part_real, 10)
-        self.assertEqual(obj_c.part_omega, 15)
+        self.assertEqual(obj_c, EisNumber(10, 15))
 
     def test_multiply_by_omega(self):
         '''
@@ -117,8 +111,7 @@ class TestNumber(unittest.TestCase):
         obj_a = EisNumber(1, 0)
         obj_b = EisNumber(0, 1)
         obj_c = obj_a * obj_b
-        self.assertEqual(obj_c.part_real, 0)
-        self.assertEqual(obj_c.part_omega, 1)
+        self.assertEqual(obj_c, EisNumber(0, 1))
 
     def test_omega_by_omega(self):
         '''

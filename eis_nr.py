@@ -35,8 +35,12 @@ class EisNumber:
         '''
         EisNumber:
         '''
-        tmp_real = self.part_real * other.part_real
-        tmp_omega = self.part_omega * other.part_real
+        a = self.part_real
+        b = self.part_omega
+        c = other.part_real
+        d = other.part_omega
+        tmp_real = a * c
+        tmp_omega = b * c
         return EisNumber(tmp_real, tmp_omega)
 
 class TestNumber(unittest.TestCase):

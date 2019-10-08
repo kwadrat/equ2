@@ -4,7 +4,11 @@
 import unittest
 
 class EisNumber:
-    pass
+    def __init__(self):
+        '''
+        EisNumber:
+        '''
+        self.omega = 0
 
 class TestNumber(unittest.TestCase):
     def test_create_number(self):
@@ -12,3 +16,4 @@ class TestNumber(unittest.TestCase):
         TestNumber:
         """
         obj = EisNumber()
+        self.assertEqual(obj.omega, 0)

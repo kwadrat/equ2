@@ -20,7 +20,7 @@ def get_delta(first_ls):
 
 
 
-def kot(line_nr):  
+def kot(line_nr):
     first_ls = []
     if line_nr % 2:
         horiz_start = 0.5

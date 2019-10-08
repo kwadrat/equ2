@@ -39,8 +39,12 @@ class EisNumber:
         b = self.part_omega
         c = other.part_real
         d = other.part_omega
-        tmp_real = a * c
-        tmp_omega = b * c
+        if d:
+            tmp_real = 0
+            tmp_omega = 1
+        else:
+            tmp_real = a * c
+            tmp_omega = b * c
         return EisNumber(tmp_real, tmp_omega)
 
 class TestNumber(unittest.TestCase):
@@ -99,3 +103,13 @@ class TestNumber(unittest.TestCase):
         obj_c = obj_a * obj_b
         self.assertEqual(obj_c.part_real, 10)
         self.assertEqual(obj_c.part_omega, 15)
+
+    def test_multiply_by_omega(self):
+        '''
+        TestNumber:
+        '''
+        obj_a = EisNumber(1, 0)
+        obj_b = EisNumber(0, 1)
+        obj_c = obj_a * obj_b
+        self.assertEqual(obj_c.part_real, 0)
+        self.assertEqual(obj_c.part_omega, 1)

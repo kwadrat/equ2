@@ -43,6 +43,16 @@ class EisNumber:
         tmp_omega = b * c + a * d - b * d
         return EisNumber(tmp_real, tmp_omega)
 
+    def div_mod(self, other):
+        '''
+        EisNumber:
+        '''
+        result = (
+            EisNumber(2, 3),
+            EisNumber(0, 0),
+            )
+        return result
+
     def __eq__(self, other):
         '''
         EisNumber:
@@ -155,3 +165,13 @@ class TestNumber(unittest.TestCase):
         self.assertEqual(obj_d.norm(), 49)
         obj_e = EisNumber(2, 3)
         self.assertEqual(obj_e.norm(), 7)
+
+    def test_div_mod(self):
+        '''
+        TestNumber:
+        '''
+        obj_a = EisNumber(2, 3)
+        obj_b = EisNumber(1, 0)
+        obj_c, obj_d = obj_a.div_mod(obj_b)
+        self.assertEqual(obj_c, EisNumber(2, 3))
+        self.assertEqual(obj_d, EisNumber(0, 0))

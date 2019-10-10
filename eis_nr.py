@@ -89,17 +89,9 @@ class EisNumber:
         b = self.part_omega
         if b == 0:
             value = self
-        elif b == -1:
-            c = a + 1
-            d = 1
-            value = EisNumber(c, d)
-        elif b == -2:
-            c = a + 2
-            d = 2
-            value = EisNumber(c, d)
-        elif b == -3:
-            c = a + 3
-            d = 3
+        elif b < 0:
+            c = a - b
+            d = - b
             value = EisNumber(c, d)
         else:
             c = a - 1

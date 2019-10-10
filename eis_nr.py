@@ -89,6 +89,10 @@ class EisNumber:
         b = self.part_omega
         if b == 0:
             value = self
+        elif b == -1:
+            c = a + 1
+            d = 1
+            value = EisNumber(c, d)
         else:
             c = a - 1
             d = -1
@@ -198,3 +202,5 @@ class TestNumber(unittest.TestCase):
         self.assertEqual(obj_a.conjugate(), EisNumber(2, 0))
         obj_b = EisNumber(0, 1)
         self.assertEqual(obj_b.conjugate(), EisNumber(-1, -1))
+        obj_b = EisNumber(0, -1)
+        self.assertEqual(obj_b.conjugate(), EisNumber(1, 1))

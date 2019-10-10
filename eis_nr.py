@@ -81,6 +81,13 @@ class EisNumber:
         value = a * a - a * b + b * b
         return value
 
+    def conjugate(self):
+        '''
+        EisNumber:
+        '''
+        value = self
+        return value
+
 
 class TestNumber(unittest.TestCase):
     def test_create_number(self):
@@ -175,3 +182,10 @@ class TestNumber(unittest.TestCase):
         obj_c, obj_d = obj_a.div_mod(obj_b)
         self.assertEqual(obj_c, EisNumber(2, 3))
         self.assertEqual(obj_d, EisNumber(0, 0))
+
+    def test_conj(self):
+        '''
+        TestNumber:
+        '''
+        obj_a = EisNumber(2, 0)
+        self.assertEqual(obj_a.conjugate(), EisNumber(2, 0))

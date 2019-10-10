@@ -87,10 +87,12 @@ class EisNumber:
         '''
         a = self.part_real
         b = self.part_omega
-        if a == 2:
+        if b == 0:
             value = self
         else:
-            value = EisNumber(-1, -1)
+            c = a - 1
+            d = -1
+            value = EisNumber(c, d)
         return value
 
 

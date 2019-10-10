@@ -47,8 +47,15 @@ class EisNumber:
         '''
         EisNumber:
         '''
+        a = self.part_real
+        b = self.part_omega
+        c = other.part_real
+        d = other.part_omega
+        bottom = other.norm()
+        e = a * c + b * d - a * d
+        f = b * c - a * d
         result = (
-            EisNumber(2, 3),
+            EisNumber(e / bottom, f / bottom),
             EisNumber(0, 0),
             )
         return result

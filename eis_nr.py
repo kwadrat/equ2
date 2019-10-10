@@ -3,6 +3,8 @@
 
 import unittest
 
+verbose_tests = 1
+
 class EisNumber:
     def __init__(self, given_real=None, given_omega=None):
         '''
@@ -54,6 +56,11 @@ class EisNumber:
         bottom = other.norm()
         e = a * c + b * d - a * d
         f = b * c - a * d
+        if verbose_tests:
+            print()
+            tmp_format = 'bottom'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
+            tmp_format = 'e'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
+            tmp_format = 'f'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
         result = EisNumber(e / bottom, f / bottom)
         return result
 

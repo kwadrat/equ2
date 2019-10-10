@@ -85,7 +85,12 @@ class EisNumber:
         '''
         EisNumber:
         '''
-        value = self
+        a = self.part_real
+        b = self.part_omega
+        if a == 2:
+            value = self
+        else:
+            value = EisNumber(-1, -1)
         return value
 
 
@@ -189,3 +194,5 @@ class TestNumber(unittest.TestCase):
         '''
         obj_a = EisNumber(2, 0)
         self.assertEqual(obj_a.conjugate(), EisNumber(2, 0))
+        obj_b = EisNumber(0, 1)
+        self.assertEqual(obj_b.conjugate(), EisNumber(-1, -1))

@@ -202,5 +202,5 @@ class TestNumber(unittest.TestCase):
         self.assertEqual(obj_a.conjugate(), EisNumber(2, 0))
         obj_b = EisNumber(0, 1)
         self.assertEqual(obj_b.conjugate(), EisNumber(-1, -1))
-        obj_b = EisNumber(0, -1)
-        self.assertEqual(obj_b.conjugate(), EisNumber(1, 1))
+        obj_c = EisNumber(0, -1)
+        self.assertEqual(obj_c.conjugate(), EisNumber(1, 1))

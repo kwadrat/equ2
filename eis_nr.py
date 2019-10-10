@@ -3,7 +3,7 @@
 
 import unittest
 
-verbose_tests = 1
+verbose_tests = 0
 
 class EisNumber:
     def __init__(self, given_real=None, given_omega=None):

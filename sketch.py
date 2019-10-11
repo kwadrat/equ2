@@ -4,6 +4,7 @@
 hh = (3 ** 0.5) / 2.0
 span = 20
 
+
 def get_delta(first_ls):
     prev_elem = None
     delta_ls = []
@@ -17,7 +18,6 @@ def get_delta(first_ls):
         prev_elem = one_elem
     delta_ls.append(None)
     return delta_ls
-
 
 
 def kot(line_nr):

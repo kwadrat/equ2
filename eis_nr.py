@@ -45,7 +45,7 @@ class EisNumber:
         tmp_omega = b * c + a * d - b * d
         return EisNumber(tmp_real, tmp_omega)
 
-    def __truediv__(self, other):
+    def div_mod(self, other):
         '''
         EisNumber:
         '''
@@ -61,7 +61,12 @@ class EisNumber:
             tmp_format = 'bottom'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
             tmp_format = 'e'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
             tmp_format = 'f'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
-        result = EisNumber(e / bottom, f / bottom)
+        g, h = divmod(e, bottom)
+        i, j = divmod(f, bottom)
+        result = (
+            EisNumber(g, i),
+            EisNumber(h, j),
+        )
         return result
 
     def __eq__(self, other):
@@ -194,8 +199,21 @@ class TestNumber(unittest.TestCase):
         '''
         obj_a = EisNumber(2, 3)
         obj_b = EisNumber(1, 0)
-        obj_c = obj_a / obj_b
+        obj_c, obj_d = obj_a.div_mod(obj_b)
         self.assertEqual(obj_c, EisNumber(2, 3))
+        self.assertEqual(obj_d, EisNumber(0, 0))
+
+    def test_rest_from_div_mod(self):
+        '''
+        TestNumber:
+        '''
+        a = EisNumber(4,1)
+        b = EisNumber(3,1)
+        c = EisNumber(2,1)
+        d = a * b + c
+        e, f = d.div_mod(a)
+        self.assertEqual(e, EisNumber(3, 1))
+        self.assertEqual(f, EisNumber(7, 2))
 
     def test_conj(self):
         '''

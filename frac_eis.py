@@ -7,13 +7,18 @@ from fractions import Fraction
 
 
 class FracEis:
-    def __init__(self, four):
+    def __init__(self, four=None, two=None):
         """
         FracEis:
         """
-        (real_num, real_den, omega_num, omega_den) = four
-        self.co_real = Fraction(real_num, real_den)
-        self.co_omega = Fraction(omega_num, omega_den)
+        if four is not None:
+            (real_num, real_den, omega_num, omega_den) = four
+            self.co_real = Fraction(real_num, real_den)
+            self.co_omega = Fraction(omega_num, omega_den)
+        else:
+            (co_real, co_omega) = two
+            self.co_real = co_real
+            self.co_omega = co_omega
 
     def __str__(self):
         """
@@ -31,3 +36,12 @@ class TestFrac(unittest.TestCase):
         self.assertEqual(str(obj), "(1/2, 3/4w)")
         obj = FracEis(four=(5, 6, 7, 11))
         self.assertEqual(str(obj), "(5/6, 7/11w)")
+
+    def test_two_parts(self):
+        """
+        TestFrac:
+        """
+        a = Fraction(12, 13)
+        b = Fraction(17, 19)
+        c = FracEis(two=(a, b))
+        self.assertEqual(str(c), "(12/13, 17/19w)")

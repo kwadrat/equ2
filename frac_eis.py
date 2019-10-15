@@ -3,6 +3,7 @@
 
 
 import unittest
+from fractions import Fraction
 
 
 class FracEis:
@@ -10,18 +11,15 @@ class FracEis:
         """
         FracEis:
         """
-        (self.real_num, self.real_den, self.omega_num, self.omega_den) = four
+        (real_num, real_den, omega_num, omega_den) = four
+        self.co_real = Fraction(real_num, real_den)
+        self.co_omega = Fraction(omega_num, omega_den)
 
     def __str__(self):
         """
         FracEis:
         """
-        return "(%(real_num)d/%(real_den)d, %(omega_num)d/%(omega_den)dw)" % dict(
-            real_num=self.real_num,
-            real_den=self.real_den,
-            omega_num=self.omega_num,
-            omega_den=self.omega_den,
-        )
+        return "(%s, %sw)" % (self.co_real, self.co_omega)
 
 
 class TestFrac(unittest.TestCase):

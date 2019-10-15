@@ -96,6 +96,12 @@ class FracEis:
         result = (FracEis(two=(g, i)), FracEis(two=(h, j)))
         return result
 
+    def __repr__(self):
+        """
+        FracEis:
+        """
+        return "FracEis(%s, %s)" % (self.co_real, self.co_omega)
+
 
 class TestFrac(unittest.TestCase):
     def test_four_parts(self):

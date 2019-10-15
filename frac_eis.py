@@ -67,6 +67,12 @@ class FracEis:
         value = a * a - a * b + b * b
         return value
 
+    def __eq__(self, other):
+        """
+        FracEis:
+        """
+        return self.co_real == other.co_real and self.co_omega == other.co_omega
+
 
 class TestFrac(unittest.TestCase):
     def test_four_parts(self):
@@ -128,3 +134,11 @@ class TestFrac(unittest.TestCase):
         self.assertEqual(obj_a.norm(), 1)
         obj_a = FracEis(four=(1, 1, 1, 2))
         self.assertEqual(obj_a.norm(), Fraction(3, 4))
+
+    def test_compare_values(self):
+        """
+        TestFrac:
+        """
+        obj_a = FracEis(four=(2, 4, 2, 3))
+        obj_b = FracEis(four=(1, 2, 6, 9))
+        self.assertEqual(obj_a == obj_b, True)

@@ -10,8 +10,9 @@ import sys
 import unittest
 
 import eis_nr
+import frac_eis
 
-fast_test_ls = [eis_nr.TestNumber]
+fast_test_ls = [eis_nr.TestNumber, frac_eis.TestFrac]
 
 
 def add_all_fast(suite):

@@ -15,10 +15,14 @@ class FracEis:
             (real_num, real_den, omega_num, omega_den) = four
             self.co_real = Fraction(real_num, real_den)
             self.co_omega = Fraction(omega_num, omega_den)
-        else:
+        elif two is not None:
             (co_real, co_omega) = two
             self.co_real = co_real
             self.co_omega = co_omega
+        else:
+            raise RuntimeError(
+                "Specify two or four parameters to define Eisenstein fraction"
+            )
 
     def __str__(self):
         """
@@ -100,3 +104,9 @@ class TestFrac(unittest.TestCase):
         b = FracEis(four=(7, 11, 13, 17))
         c = a * b
         self.assertEqual(str(c), "(-263/1870, 571/1870w)")
+
+    def test_no_arguments(self):
+        """
+        TestFrac:
+        """
+        self.assertRaises(RuntimeError, FracEis)

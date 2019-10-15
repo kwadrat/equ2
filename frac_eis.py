@@ -88,12 +88,9 @@ class FracEis:
         f = b * c - a * d
         if verbose_tests:
             print()
-            tmp_format = "bottom"
-            print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
-            tmp_format = "e"
-            print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
-            tmp_format = "f"
-            print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
+            tmp_format = "bottom"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
+            tmp_format = "e"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
+            tmp_format = "f"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
         g, h = divmod(e, bottom)
         i, j = divmod(f, bottom)
         result = (FracEis(two=(g, i)), FracEis(two=(h, j)))

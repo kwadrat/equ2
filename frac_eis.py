@@ -58,6 +58,15 @@ class FracEis:
         tmp_omega = b * c + a * d - b * d
         return FracEis(two=(tmp_real, tmp_omega))
 
+    def norm(self):
+        """
+        FracEis:
+        """
+        a = self.co_real
+        b = self.co_omega
+        value = a * a - a * b + b * b
+        return value
+
 
 class TestFrac(unittest.TestCase):
     def test_four_parts(self):
@@ -110,3 +119,12 @@ class TestFrac(unittest.TestCase):
         TestFrac:
         """
         self.assertRaises(RuntimeError, FracEis)
+
+    def test_norm(self):
+        """
+        TestFrac:
+        """
+        obj_a = FracEis(four=(1, 1, 1, 1))
+        self.assertEqual(obj_a.norm(), 1)
+        obj_a = FracEis(four=(1, 1, 1, 2))
+        self.assertEqual(obj_a.norm(), Fraction(3, 4))

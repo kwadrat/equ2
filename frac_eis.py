@@ -42,6 +42,18 @@ class FracEis:
         new_omega = self.co_omega - other.co_omega
         return FracEis(two=(new_real, new_omega))
 
+    def __mul__(self, other):
+        """
+        FracEis:
+        """
+        a = self.co_real
+        b = self.co_omega
+        c = other.co_real
+        d = other.co_omega
+        tmp_real = a * c - b * d
+        tmp_omega = b * c + a * d - b * d
+        return FracEis(two=(tmp_real, tmp_omega))
+
 
 class TestFrac(unittest.TestCase):
     def test_four_parts(self):
@@ -79,3 +91,12 @@ class TestFrac(unittest.TestCase):
         b = FracEis(four=(1, 3, 3, 4))
         c = a - b
         self.assertEqual(str(c), "(1/6, 0w)")
+
+    def test_multiply_values(self):
+        """
+        TestFrac:
+        """
+        a = FracEis(four=(1, 2, 3, 5))
+        b = FracEis(four=(7, 11, 13, 17))
+        c = a * b
+        self.assertEqual(str(c), "(-263/1870, 571/1870w)")

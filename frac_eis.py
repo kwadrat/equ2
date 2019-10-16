@@ -72,10 +72,14 @@ class FracEis:
         """
         a = self.co_real
         b = self.co_omega
-        c = other.co_real
-        d = other.co_omega
-        tmp_real = a * c - b * d
-        tmp_omega = b * c + a * d - b * d
+        if type(other) is int:
+            tmp_real = a * other
+            tmp_omega = b * other
+        else:
+            c = other.co_real
+            d = other.co_omega
+            tmp_real = a * c - b * d
+            tmp_omega = b * c + a * d - b * d
         return FracEis(two=(tmp_real, tmp_omega))
 
     def norm(self):
@@ -239,3 +243,11 @@ class TestFrac(unittest.TestCase):
         self.assertEqual(b, FracEis(four=(1, 2, -3, 4)))
         c = a / 3
         self.assertEqual(c, FracEis(four=(1, 3, -1, 2)))
+
+    def test_multiply_by_integer(self):
+        """
+        TestFrac:
+        """
+        a = FracEis(four=(1, 3, -3, 2))
+        b = a * 2
+        self.assertEqual(b, FracEis(four=(2, 3, -3, 1)))

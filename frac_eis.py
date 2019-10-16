@@ -30,12 +30,19 @@ class FracEis:
         """
         FracEis:
         """
-        return "FracEis(four=(%d, %d, %d, %d))" % (
-            self.co_real.numerator,
-            self.co_real.denominator,
-            self.co_omega.numerator,
-            self.co_omega.denominator,
-        )
+        if self.co_real.denominator == self.co_omega.denominator == 1:
+            result = "EisNumber(%d, %d)" % (
+                self.co_real.numerator,
+                self.co_omega.numerator,
+            )
+        else:
+            result = "FracEis(four=(%d, %d, %d, %d))" % (
+                self.co_real.numerator,
+                self.co_real.denominator,
+                self.co_omega.numerator,
+                self.co_omega.denominator,
+            )
+        return result
 
     def math_view(self):
         """
@@ -205,3 +212,10 @@ class TestFrac(unittest.TestCase):
         obj_c, obj_d = obj_a.div_mod(obj_b)
         self.assertEqual(obj_c, FracEis(four=(2, 1, 3, 1)))
         self.assertEqual(obj_d, FracEis(four=(0, 1, 0, 1)))
+
+    def test_fraction_as_integer(self):
+        """
+        TestFrac:
+        """
+        a = FracEis(four=(2, 1, -3, 1))
+        self.assertEqual(str(a), "EisNumber(2, -3)")

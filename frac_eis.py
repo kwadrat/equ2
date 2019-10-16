@@ -131,6 +131,16 @@ class FracEis:
         value = FracEis(two=(c, d))
         return value
 
+    def __truediv__(self, other):
+        """
+        FracEis:
+        """
+        a = self.co_real
+        b = self.co_omega
+        c = a / 2
+        d = b / 2
+        return FracEis(two=(c, d))
+
 
 class TestFrac(unittest.TestCase):
     def test_four_parts(self):
@@ -219,3 +229,11 @@ class TestFrac(unittest.TestCase):
         """
         a = FracEis(four=(2, 1, -3, 1))
         self.assertEqual(str(a), "EisNumber(2, -3)")
+
+    def test_division_by_integer(self):
+        """
+        TestFrac:
+        """
+        a = FracEis(four=(1, 1, -3, 2))
+        a = a / 2
+        self.assertEqual(a, FracEis(four=(1, 2, -3, 4)))

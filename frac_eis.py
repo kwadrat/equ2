@@ -121,9 +121,8 @@ class FracEis:
         a = self.co_real
         b = self.co_omega
         if type(other) is int:
-            c = a / other
-            d = b / other
-            result = FracEis(two=(c, d))
+            g = a / other
+            h = b / other
         else:
             c = other.co_real
             d = other.co_omega
@@ -137,7 +136,7 @@ class FracEis:
                 tmp_format = "f"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
             g = e / bottom
             h = f / bottom
-            result = FracEis(two=(g, h))
+        result = FracEis(two=(g, h))
         return result
 
 

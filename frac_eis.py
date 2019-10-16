@@ -137,8 +137,8 @@ class FracEis:
         """
         a = self.co_real
         b = self.co_omega
-        c = a / 2
-        d = b / 2
+        c = a / other
+        d = b / other
         return FracEis(two=(c, d))
 
 
@@ -235,5 +235,7 @@ class TestFrac(unittest.TestCase):
         TestFrac:
         """
         a = FracEis(four=(1, 1, -3, 2))
-        a = a / 2
-        self.assertEqual(a, FracEis(four=(1, 2, -3, 4)))
+        b = a / 2
+        self.assertEqual(b, FracEis(four=(1, 2, -3, 4)))
+        c = a / 3
+        self.assertEqual(c, FracEis(four=(1, 3, -1, 2)))

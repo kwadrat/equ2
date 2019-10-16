@@ -97,27 +97,6 @@ class FracEis:
         """
         return self.co_real == other.co_real and self.co_omega == other.co_omega
 
-    def div_mod(self, other):
-        """
-        FracEis:
-        """
-        a = self.co_real
-        b = self.co_omega
-        c = other.co_real
-        d = other.co_omega
-        bottom = other.norm()
-        e = a * c + b * d - a * d
-        f = b * c - a * d
-        if verbose_tests:
-            print()
-            tmp_format = "bottom"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
-            tmp_format = "e"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
-            tmp_format = "f"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
-        g, h = divmod(e, bottom)
-        i, j = divmod(f, bottom)
-        result = (FracEis(two=(g, i)), FracEis(two=(h, j)))
-        return result
-
     def __repr__(self):
         """
         FracEis:
@@ -141,9 +120,25 @@ class FracEis:
         """
         a = self.co_real
         b = self.co_omega
-        c = a / other
-        d = b / other
-        return FracEis(two=(c, d))
+        if type(other) is int:
+            c = a / other
+            d = b / other
+            result = FracEis(two=(c, d))
+        else:
+            c = other.co_real
+            d = other.co_omega
+            bottom = other.norm()
+            e = a * c + b * d - a * d
+            f = b * c - a * d
+            if verbose_tests:
+                print()
+                tmp_format = "bottom"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
+                tmp_format = "e"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
+                tmp_format = "f"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
+            g = e / bottom
+            h = f / bottom
+            result = FracEis(two=(g, h))
+        return result
 
 
 class TestFrac(unittest.TestCase):
@@ -223,9 +218,8 @@ class TestFrac(unittest.TestCase):
         """
         obj_a = FracEis(four=(2, 1, 3, 1))
         obj_b = FracEis(four=(1, 1, 0, 1))
-        obj_c, obj_d = obj_a.div_mod(obj_b)
+        obj_c = obj_a / obj_b
         self.assertEqual(obj_c, FracEis(four=(2, 1, 3, 1)))
-        self.assertEqual(obj_d, FracEis(four=(0, 1, 0, 1)))
 
     def test_fraction_as_integer(self):
         """

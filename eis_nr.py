@@ -109,9 +109,8 @@ class TestNumber(unittest.TestCase):
         """
         obj_a = EisNumber(2, 3)
         obj_b = EisNumber(1, 0)
-        obj_c, obj_d = obj_a.div_mod(obj_b)
+        obj_c = obj_a / obj_b
         self.assertEqual(obj_c, EisNumber(2, 3))
-        self.assertEqual(obj_d, EisNumber(0, 0))
 
     def test_rest_from_div_mod(self):
         """
@@ -119,11 +118,9 @@ class TestNumber(unittest.TestCase):
         """
         a = EisNumber(4, 1)
         b = EisNumber(3, 1)
-        c = EisNumber(2, 1)
-        d = a * b + c
-        e, f = d.div_mod(a)
+        d = a * b
+        e = d / a
         self.assertEqual(e, EisNumber(3, 1))
-        self.assertEqual(f, EisNumber(7, 2))
 
     def test_conj(self):
         """

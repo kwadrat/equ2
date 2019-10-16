@@ -30,7 +30,12 @@ class FracEis:
         """
         FracEis:
         """
-        return "(%s, %sw)" % (self.co_real, self.co_omega)
+        return "FracEis(four=(%d, %d, %d, %d))" % (
+            self.co_real.numerator,
+            self.co_real.denominator,
+            self.co_omega.numerator,
+            self.co_omega.denominator,
+        )
 
     def math_view(self):
         """
@@ -106,7 +111,7 @@ class FracEis:
         """
         FracEis:
         """
-        return "FracEis(%s, %s)" % (self.co_real, self.co_omega)
+        return str(self)
 
 
 class TestFrac(unittest.TestCase):
@@ -115,18 +120,18 @@ class TestFrac(unittest.TestCase):
         TestFrac:
         """
         obj = FracEis(four=(1, 2, 3, 4))
-        self.assertEqual(str(obj), "(1/2, 3/4w)")
+        self.assertEqual(str(obj), "FracEis(four=(1, 2, 3, 4))")
         obj = FracEis(four=(5, 6, 7, 11))
-        self.assertEqual(str(obj), "(5/6, 7/11w)")
+        self.assertEqual(str(obj), "FracEis(four=(5, 6, 7, 11))")
 
     def test_two_parts(self):
         """
         TestFrac:
         """
         a = Fraction(12, 13)
-        b = Fraction(17, 19)
+        b = Fraction(-17, 19)
         c = FracEis(two=(a, b))
-        self.assertEqual(str(c), "(12/13, 17/19w)")
+        self.assertEqual(str(c), "FracEis(four=(12, 13, -17, 19))")
 
     def test_add_values(self):
         """
@@ -135,7 +140,7 @@ class TestFrac(unittest.TestCase):
         a = FracEis(four=(1, 2, 3, 4))
         b = FracEis(four=(1, 3, 3, 4))
         c = a + b
-        self.assertEqual(str(c), "(5/6, 3/2w)")
+        self.assertEqual(str(c), "FracEis(four=(5, 6, 3, 2))")
 
     def test_substract_values(self):
         """
@@ -144,7 +149,7 @@ class TestFrac(unittest.TestCase):
         a = FracEis(four=(1, 2, 3, 4))
         b = FracEis(four=(1, 3, 3, 4))
         c = a - b
-        self.assertEqual(str(c), "(1/6, 0w)")
+        self.assertEqual(str(c), "FracEis(four=(1, 6, 0, 1))")
 
     def test_multiply_values(self):
         """
@@ -154,6 +159,8 @@ class TestFrac(unittest.TestCase):
         b = FracEis(four=(7, 11, 13, 17))
         c = a * b
         self.assertEqual(c.math_view(), "(-263/1870, 571/1870w)")
+        self.assertEqual(str(c), "FracEis(four=(-263, 1870, 571, 1870))")
+        self.assertEqual(repr(c), "FracEis(four=(-263, 1870, 571, 1870))")
 
     def test_no_arguments(self):
         """

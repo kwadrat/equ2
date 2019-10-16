@@ -113,6 +113,17 @@ class FracEis:
         """
         return str(self)
 
+    def conjugate(self):
+        """
+        FracEis:
+        """
+        a = self.co_real
+        b = self.co_omega
+        c = a - b
+        d = -b
+        value = FracEis(two=(c, d))
+        return value
+
 
 class TestFrac(unittest.TestCase):
     def test_four_parts(self):

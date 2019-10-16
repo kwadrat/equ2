@@ -2,104 +2,21 @@
 # -*- coding: UTF-8 -*-
 
 import unittest
+from frac_eis import FracEis
 
 verbose_tests = 0
 
 
-class EisNumber:
+class EisNumber(FracEis):
     def __init__(self, given_real=None, given_omega=None):
         """
         EisNumber:
         """
         if given_real is None:
             given_real = 0
-        self.part_real = given_real
         if given_omega is None:
             given_omega = 0
-        self.part_omega = given_omega
-
-    def __add__(self, other):
-        """
-        EisNumber:
-        """
-        tmp_real = self.part_real + other.part_real
-        tmp_omega = self.part_omega + other.part_omega
-        return EisNumber(tmp_real, tmp_omega)
-
-    def __sub__(self, other):
-        """
-        EisNumber:
-        """
-        tmp_real = self.part_real - other.part_real
-        tmp_omega = self.part_omega - other.part_omega
-        return EisNumber(tmp_real, tmp_omega)
-
-    def __mul__(self, other):
-        """
-        EisNumber:
-        """
-        a = self.part_real
-        b = self.part_omega
-        c = other.part_real
-        d = other.part_omega
-        tmp_real = a * c - b * d
-        tmp_omega = b * c + a * d - b * d
-        return EisNumber(tmp_real, tmp_omega)
-
-    def div_mod(self, other):
-        """
-        EisNumber:
-        """
-        a = self.part_real
-        b = self.part_omega
-        c = other.part_real
-        d = other.part_omega
-        bottom = other.norm()
-        e = a * c + b * d - a * d
-        f = b * c - a * d
-        if verbose_tests:
-            print()
-            tmp_format = 'bottom'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
-            tmp_format = 'e'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
-            tmp_format = 'f'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
-        g, h = divmod(e, bottom)
-        i, j = divmod(f, bottom)
-        result = (EisNumber(g, i), EisNumber(h, j))
-        return result
-
-    def __eq__(self, other):
-        """
-        EisNumber:
-        """
-        return self.part_real == other.part_real and self.part_omega == other.part_omega
-
-    def __repr__(self):
-        """
-        EisNumber:
-        """
-        return "EisNumber(%d, %d)" % (self.part_real, self.part_omega)
-
-    def norm(self):
-        """
-        EisNumber:
-        Norm - it is a square of modulus
-        N(a + bw) = |a + bw|^2 = a^2 - ab + b^2
-        """
-        a = self.part_real
-        b = self.part_omega
-        value = a * a - a * b + b * b
-        return value
-
-    def conjugate(self):
-        """
-        EisNumber:
-        """
-        a = self.part_real
-        b = self.part_omega
-        c = a - b
-        d = -b
-        value = EisNumber(c, d)
-        return value
+        super(EisNumber, self).__init__(four=(given_real, 1, given_omega, 1))
 
 
 class TestNumber(unittest.TestCase):

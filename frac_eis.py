@@ -44,12 +44,6 @@ class FracEis:
             )
         return result
 
-    def math_view(self):
-        """
-        FracEis:
-        """
-        return "(%s, %sw)" % (self.co_real, self.co_omega)
-
     def __add__(self, other):
         """
         FracEis:
@@ -195,7 +189,6 @@ class TestFrac(unittest.TestCase):
         a = FracEis(four=(1, 2, 3, 5))
         b = FracEis(four=(7, 11, 13, 17))
         c = a * b
-        self.assertEqual(c.math_view(), "(-263/1870, 571/1870w)")
         self.assertEqual(str(c), "FracEis(four=(-263, 1870, 571, 1870))")
         self.assertEqual(repr(c), "FracEis(four=(-263, 1870, 571, 1870))")
 

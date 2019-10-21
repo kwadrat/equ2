@@ -147,7 +147,7 @@ class FracEis:
         b = self.co_omega
         c = other.co_real
         d = other.co_omega
-        result = a * c
+        result = a * c + b * d - (b * c + a * d) / 2
         return result
 
 

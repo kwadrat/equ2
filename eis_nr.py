@@ -153,3 +153,8 @@ class TestNumber(unittest.TestCase):
         self.assertEqual(a.dot_product(a), 4)
         b = EisNumber(3, 0)
         self.assertEqual(a.dot_product(b), 6)
+        a = EisNumber(0, 1)
+        self.assertEqual(a.dot_product(a), 1)
+        a = EisNumber(1, 1)
+        b = EisNumber(1, -1)
+        self.assertEqual(a.dot_product(b), 0)

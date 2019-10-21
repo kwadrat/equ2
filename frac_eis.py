@@ -139,6 +139,17 @@ class FracEis:
         result = FracEis(two=(g, h))
         return result
 
+    def dot_product(self, other):
+        """
+        FracEis:
+        """
+        a = self.co_real
+        b = self.co_omega
+        c = other.co_real
+        d = other.co_omega
+        result = a * c
+        return result
+
 
 class TestFrac(unittest.TestCase):
     def test_four_parts(self):

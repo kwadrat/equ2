@@ -140,3 +140,16 @@ class TestNumber(unittest.TestCase):
         self.assertEqual(obj_f.conjugate(), EisNumber(-2, -2))
         obj_f = EisNumber(2, 2)
         self.assertEqual(obj_f.conjugate(), EisNumber(0, -2))
+
+    def test_dot(self):
+        """
+        TestFrac:
+        """
+        a = EisNumber(0, 0)
+        self.assertEqual(a.dot_product(a), 0)
+        a = EisNumber(1, 0)
+        self.assertEqual(a.dot_product(a), 1)
+        a = EisNumber(2, 0)
+        self.assertEqual(a.dot_product(a), 4)
+        b = EisNumber(3, 0)
+        self.assertEqual(a.dot_product(b), 6)

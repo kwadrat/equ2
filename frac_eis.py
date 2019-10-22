@@ -64,9 +64,7 @@ class FracEis:
         """
         FracEis:
         """
-        new_real = self.co_real - other.co_real
-        new_omega = self.co_omega - other.co_omega
-        return FracEis(two=(new_real, new_omega))
+        return self.__add__(-other)
 
     def __mul__(self, other):
         """

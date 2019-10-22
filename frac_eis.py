@@ -44,6 +44,14 @@ class FracEis:
             )
         return result
 
+    def __neg__(self):
+        """
+        FracEis:
+        """
+        new_real = - self.co_real
+        new_omega = - self.co_omega
+        return FracEis(two=(new_real, new_omega))
+
     def __add__(self, other):
         """
         FracEis:

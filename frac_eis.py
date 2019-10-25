@@ -26,6 +26,15 @@ class FracEis:
                 "Specify two or four parameters to define Eisenstein fraction"
             )
 
+    def is_integer(self):
+        """
+        FracEis:
+        """
+        return (
+           self.co_real.denominator == 1 and
+           self.co_omega.denominator == 1
+           )
+
     def __str__(self):
         """
         FracEis:
@@ -149,15 +158,6 @@ class FracEis:
         d = other.co_omega
         result = a * c + b * d - (b * c + a * d) / 2
         return result
-
-    def is_integer(self):
-        """
-        FracEis:
-        """
-        return (
-           self.co_real.denominator == 1 and
-           self.co_omega.denominator == 1
-           )
 
 
 class TestFrac(unittest.TestCase):

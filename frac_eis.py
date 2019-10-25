@@ -150,6 +150,15 @@ class FracEis:
         result = a * c + b * d - (b * c + a * d) / 2
         return result
 
+    def is_integer(self):
+        """
+        FracEis:
+        """
+        return (
+           self.co_real.denominator == 1 and
+           self.co_omega.denominator == 1
+           )
+
 
 class TestFrac(unittest.TestCase):
     def test_four_parts(self):
@@ -254,3 +263,14 @@ class TestFrac(unittest.TestCase):
         a = FracEis(four=(1, 3, -3, 2))
         b = a * 2
         self.assertEqual(b, FracEis(four=(2, 3, -3, 1)))
+
+    def test_integer_detected(self):
+        """
+        TestFrac:
+        """
+        a = FracEis(four=(1, 3, 0, 1))
+        self.assertEqual(a.is_integer(), 0)
+        a = FracEis(four=(1, 1, 0, 1))
+        self.assertEqual(a.is_integer(), 1)
+        a = FracEis(four=(1, 1, 1, 2))
+        self.assertEqual(a.is_integer(), 0)

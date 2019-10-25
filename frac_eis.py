@@ -39,7 +39,7 @@ class FracEis:
         """
         FracEis:
         """
-        if self.co_real.denominator == self.co_omega.denominator == 1:
+        if self.is_integer():
             result = "EisNumber(%d, %d)" % (
                 self.co_real.numerator,
                 self.co_omega.numerator,

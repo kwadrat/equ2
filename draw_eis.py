@@ -3,7 +3,21 @@
 
 import sys
 
-from turtle import *
+from turtle import (
+    backward,
+    back,
+    color,
+    down,
+    forward,
+    hideturtle,
+    left,
+    mainloop,
+    onclick,
+    right,
+    showturtle,
+    speed,
+    up,
+    )
 
 width = 16
 height = 11

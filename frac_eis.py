@@ -31,9 +31,9 @@ class FracEis:
         FracEis:
         """
         return (
-           self.co_real.denominator == 1 and
-           self.co_omega.denominator == 1
-           )
+            self.co_real.denominator == 1
+            and self.co_omega.denominator == 1
+            )
 
     def __str__(self):
         """
@@ -140,9 +140,12 @@ class FracEis:
             f = b * c - a * d
             if verbose_tests:
                 print()
-                tmp_format = "bottom"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
-                tmp_format = "e"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
-                tmp_format = "f"; print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
+                tmp_format = "bottom"
+                print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
+                tmp_format = "e"
+                print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
+                tmp_format = "f"
+                print("Eval: %s %s" % (tmp_format, eval(tmp_format)))
             g = e / bottom
             h = f / bottom
         result = FracEis(two=(g, h))

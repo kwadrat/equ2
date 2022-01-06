@@ -76,16 +76,20 @@ def make_skos_travel():
 def make_horiz_travel():
     dst_pos = width / 2
     if debug_centering:
-        tmp_format = 'dst_pos'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
+        tmp_format = 'dst_pos'
+        print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
     horiz_pos = (height) / 2
     if debug_centering:
-        tmp_format = 'horiz_pos'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
+        tmp_format = 'horiz_pos'
+        print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
     difference = dst_pos - horiz_pos
     if debug_centering:
-        tmp_format = 'difference'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
+        tmp_format = 'difference'
+        print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
     step_count = abs(difference)
     if debug_centering:
-        tmp_format = 'step_count'; print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
+        tmp_format = 'step_count'
+        print('Eval: %s %s' % (tmp_format, eval(tmp_format)))
     for i in range(int(step_count)):
         if difference > 0:
             forward(edge_len)
